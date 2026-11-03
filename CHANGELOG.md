@@ -7,6 +7,8 @@ Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionen 
 
 ## [Unveröffentlicht]
 
+## [0.1.1] – 2026-11-03
+
 ### Neu
 
 - Favicon (`brand/favicon.png`, 32 × 32) im Stil des App-Favicons mit Haus-Badge.
