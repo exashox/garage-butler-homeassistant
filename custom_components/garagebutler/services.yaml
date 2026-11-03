@@ -1,0 +1,17 @@
+update_mileage:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          filter:
+            integration: garagebutler
+    mileage:
+      required: true
+      example: 123456
+      selector:
+        number:
+          min: 0
+          max: 9999999
+          mode: box
+          unit_of_measurement: km

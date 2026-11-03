@@ -1,0 +1,12 @@
+{
+  "domain": "garagebutler",
+  "name": "GarageButler",
+  "codeowners": [],
+  "config_flow": true,
+  "documentation": "https://git.exalabs.de/nero/garage-butler-homeassistant",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://git.exalabs.de/nero/garage-butler-homeassistant/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

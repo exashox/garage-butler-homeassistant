@@ -1,0 +1,100 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect GarageButler",
+        "description": "In the GarageButler app open Settings → Home Assistant, create a connection and paste the code here.",
+        "data": {
+          "code": "Connection code"
+        },
+        "data_description": {
+          "code": "Starts with gbha1: and contains server, key and your personal token."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reconnect GarageButler",
+        "description": "The connection was revoked or is no longer valid. Create a new connection in the app and paste its code.",
+        "data": {
+          "code": "Connection code"
+        }
+      }
+    },
+    "error": {
+      "invalid_code": "This is not a GarageButler connection code.",
+      "invalid_auth": "The connection was revoked or the code is outdated.",
+      "cannot_connect": "The GarageButler server cannot be reached.",
+      "unknown": "Unexpected answer from the server – is the app up to date?"
+    },
+    "abort": {
+      "already_configured": "This GarageButler account is already connected.",
+      "reauth_successful": "Reconnected.",
+      "wrong_account": "The code belongs to another GarageButler account."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "maintenance_overdue": {
+        "name": "Maintenance overdue"
+      }
+    },
+    "calendar": {
+      "due_dates": {
+        "name": "Due dates"
+      }
+    },
+    "sensor": {
+      "mileage": {
+        "name": "Mileage"
+      },
+      "maintenance_status": {
+        "name": "Maintenance status",
+        "state": {
+          "overdue": "Overdue",
+          "due_soon": "Due soon",
+          "ok": "OK"
+        }
+      },
+      "next_maintenance": {
+        "name": "Next maintenance"
+      },
+      "next_inspection": {
+        "name": "Next inspection"
+      },
+      "distance_to_service": {
+        "name": "Distance to next service"
+      },
+      "open_todos": {
+        "name": "Open ToDos"
+      }
+    },
+    "todo": {
+      "todos": {
+        "name": "ToDos"
+      }
+    }
+  },
+  "services": {
+    "update_mileage": {
+      "name": "Update mileage",
+      "description": "Sets the mileage of a vehicle in GarageButler. Lower values than the current mileage are ignored.",
+      "fields": {
+        "device_id": {
+          "name": "Vehicle",
+          "description": "The GarageButler vehicle."
+        },
+        "mileage": {
+          "name": "Mileage",
+          "description": "Odometer reading in kilometres."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "api_error": {
+      "message": "GarageButler request failed: {error}"
+    },
+    "unknown_vehicle": {
+      "message": "{device_id} is not a loaded GarageButler vehicle."
+    }
+  }
+}

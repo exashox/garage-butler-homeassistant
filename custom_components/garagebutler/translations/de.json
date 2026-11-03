@@ -1,0 +1,100 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "GarageButler verbinden",
+        "description": "Öffne in der GarageButler-App Einstellungen → Home Assistant, erstelle eine Verbindung und füge den Code hier ein.",
+        "data": {
+          "code": "Verbindungscode"
+        },
+        "data_description": {
+          "code": "Beginnt mit gbha1: und enthält Server, Schlüssel und deinen persönlichen Token."
+        }
+      },
+      "reauth_confirm": {
+        "title": "GarageButler neu verbinden",
+        "description": "Die Verbindung wurde widerrufen oder ist nicht mehr gültig. Erstelle in der App eine neue Verbindung und füge ihren Code ein.",
+        "data": {
+          "code": "Verbindungscode"
+        }
+      }
+    },
+    "error": {
+      "invalid_code": "Das ist kein GarageButler-Verbindungscode.",
+      "invalid_auth": "Die Verbindung wurde widerrufen oder der Code ist veraltet.",
+      "cannot_connect": "Der GarageButler-Server ist nicht erreichbar.",
+      "unknown": "Unerwartete Antwort vom Server – ist die App aktuell?"
+    },
+    "abort": {
+      "already_configured": "Dieses GarageButler-Konto ist bereits verbunden.",
+      "reauth_successful": "Neu verbunden.",
+      "wrong_account": "Der Code gehört zu einem anderen GarageButler-Konto."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "maintenance_overdue": {
+        "name": "Wartung überfällig"
+      }
+    },
+    "calendar": {
+      "due_dates": {
+        "name": "Fälligkeiten"
+      }
+    },
+    "sensor": {
+      "mileage": {
+        "name": "Kilometerstand"
+      },
+      "maintenance_status": {
+        "name": "Wartungsstatus",
+        "state": {
+          "overdue": "Überfällig",
+          "due_soon": "Bald fällig",
+          "ok": "OK"
+        }
+      },
+      "next_maintenance": {
+        "name": "Nächste Wartung"
+      },
+      "next_inspection": {
+        "name": "Nächste Hauptuntersuchung"
+      },
+      "distance_to_service": {
+        "name": "Kilometer bis zur nächsten Wartung"
+      },
+      "open_todos": {
+        "name": "Offene ToDos"
+      }
+    },
+    "todo": {
+      "todos": {
+        "name": "ToDos"
+      }
+    }
+  },
+  "services": {
+    "update_mileage": {
+      "name": "Kilometerstand aktualisieren",
+      "description": "Setzt den Kilometerstand eines Fahrzeugs in GarageButler. Werte unter dem aktuellen Stand werden ignoriert.",
+      "fields": {
+        "device_id": {
+          "name": "Fahrzeug",
+          "description": "Das GarageButler-Fahrzeug."
+        },
+        "mileage": {
+          "name": "Kilometerstand",
+          "description": "Tachostand in Kilometern."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "api_error": {
+      "message": "GarageButler-Anfrage fehlgeschlagen: {error}"
+    },
+    "unknown_vehicle": {
+      "message": "{device_id} ist kein geladenes GarageButler-Fahrzeug."
+    }
+  }
+}

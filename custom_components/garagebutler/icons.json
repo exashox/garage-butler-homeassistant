@@ -1,0 +1,49 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "maintenance_overdue": {
+        "default": "mdi:car-wrench"
+      }
+    },
+    "calendar": {
+      "due_dates": {
+        "default": "mdi:calendar-clock"
+      }
+    },
+    "sensor": {
+      "mileage": {
+        "default": "mdi:counter"
+      },
+      "maintenance_status": {
+        "default": "mdi:wrench-clock",
+        "state": {
+          "overdue": "mdi:alert-circle",
+          "due_soon": "mdi:clock-alert",
+          "ok": "mdi:check-circle"
+        }
+      },
+      "next_maintenance": {
+        "default": "mdi:wrench"
+      },
+      "next_inspection": {
+        "default": "mdi:clipboard-check"
+      },
+      "distance_to_service": {
+        "default": "mdi:map-marker-distance"
+      },
+      "open_todos": {
+        "default": "mdi:format-list-checks"
+      }
+    },
+    "todo": {
+      "todos": {
+        "default": "mdi:clipboard-list"
+      }
+    }
+  },
+  "services": {
+    "update_mileage": {
+      "service": "mdi:counter"
+    }
+  }
+}
