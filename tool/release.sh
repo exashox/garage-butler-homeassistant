@@ -7,7 +7,11 @@
 #   2. commit "Release 0.2.0" on develop
 #   3. fast-forward main to develop, annotated tag v0.2.0
 #   4. push develop, main and the tag; back on develop
+#   5. GitHub release (HACS update) from the changelog section, once the
+#      Gitea push mirror has delivered the tag – needs the gh CLI
 set -euo pipefail
+
+github=exashox/garage-butler-homeassistant
 
 cd "$(dirname "$0")/.."
 
@@ -51,3 +55,16 @@ git push -q origin develop main "$tag"
 git checkout -q develop
 
 echo "✓ $tag released"
+
+release_notes="$(awk -v h="## [$version]" 'index($0, h) == 1 {f=1; next} /^## \[/{f=0} f' CHANGELOG.md)"
+if ! command -v gh >/dev/null; then
+  echo "! gh CLI missing – create the GitHub release by hand (notes: CHANGELOG.md, section $version):"
+  echo "  https://github.com/$github/releases/new?tag=$tag&title=$version"
+  exit 0
+fi
+for _ in $(seq 60); do
+  gh api "repos/$github/git/ref/tags/$tag" >/dev/null 2>&1 && break
+  sleep 5
+done
+gh release create "$tag" --repo "$github" --verify-tag --title "$version" --notes "$release_notes"
+echo "✓ GitHub release $tag"

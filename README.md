@@ -2,10 +2,11 @@
 
 # GarageButler for Home Assistant
 
+[![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=exashox&repository=garage-butler-homeassistant&category=integration)
 [![Add integration](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=garagebutler)
-[![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgit.exalabs.de%2Fnero%2Fgarage-butler-homeassistant%2Fraw%2Fbranch%2Fmain%2Fblueprints%2Fautomation%2Fgaragebutler%2Fmileage_from_car.yaml)
+[![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fexashox%2Fgarage-butler-homeassistant%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fgaragebutler%2Fmileage_from_car.yaml)
 
-Custom integration that brings [GarageButler](https://git.exalabs.de/nero/garage-butler)
+Custom integration that brings GarageButler
 vehicles, due dates and ToDos into Home Assistant – and sends the mileage back.
 
 > **Status: prepared ahead of the backend** (version in [`VERSION`](VERSION), changes in [`CHANGELOG.md`](CHANGELOG.md)). The integration talks to the
@@ -40,14 +41,17 @@ Completing maintenance tasks stays in the app (recurrence, costs, additional fie
 
 ## Installation
 
-**Manual:** copy `custom_components/garagebutler` into the `custom_components`
-folder of your Home Assistant config and restart.
+**HACS (recommended, gets updates):** click **Open in HACS** above – or HACS → ⋮ →
+Custom repositories → `https://github.com/exashox/garage-butler-homeassistant`, type
+*Integration* – then **Download** and **restart Home Assistant**. New releases show up
+as updates in Home Assistant.
 
-**HACS:** HACS only accepts GitHub repositories. Mirror this repository to
-GitHub, then add it in HACS → Custom repositories (type *Integration*).
+**Manual:** copy the folder `custom_components/garagebutler` so that you end up with
+`/config/custom_components/garagebutler/manifest.json`, then restart Home Assistant.
+Updates: copy again.
 
-Requires Home Assistant 2025.3 or later. Works with every installation type
-(OS, Supervised, Container, Core) – it is an integration, not an add-on.
+Requires Home Assistant 2025.3 or later (brand images: 2026.3). Works with every
+installation type (OS, Supervised, Container, Core) – it is an integration, not an add-on.
 
 ## Setup
 
@@ -56,8 +60,9 @@ Requires Home Assistant 2025.3 or later. Works with every installation type
    GarageButler) and paste the code.
 
 The buttons use [My Home Assistant](https://my.home-assistant.io/): on first use it asks
-for the address of your Home Assistant. *Add integration* needs the integration installed;
-*Import blueprint* needs this repository to be public (Home Assistant downloads the raw file).
+for the address of your Home Assistant. *Add integration* only works after installing and
+restarting – before that Home Assistant answers "This integration does not support
+configuration via the UI".
 
 The code (`gbha1:…`) contains the server URL, the public anon key and a personal
 token. Revoking the token in the app makes Home Assistant ask for a new code.
@@ -76,10 +81,15 @@ dark rounded square like the app favicon) is for web pages, repo avatars and the
 
 ### Branches and releases
 
+- Source of truth is `nero/garage-butler-homeassistant` on git.exalabs.de; Gitea push-mirrors
+  every push to the public [GitHub repository](https://github.com/exashox/garage-butler-homeassistant),
+  which HACS and the buttons use. Issues are on GitHub.
 - Work happens on `develop`; `main` only carries released versions, each tagged `vX.Y.Z`.
 - Note every change in `CHANGELOG.md` under *Unveröffentlicht* (German, like the other Exolva projects).
 - Release: `tool/release.sh X.Y.Z` on a clean, pushed `develop` – sets `VERSION` and
-  `manifest.json`, dates the changelog, fast-forwards `main`, tags and pushes.
+  `manifest.json`, dates the changelog, fast-forwards `main`, tags and pushes; then creates
+  the GitHub release from the changelog section (with the `gh` CLI, otherwise it prints the
+  link to create it by hand). HACS offers each GitHub release as an update.
 
 Layout:
 

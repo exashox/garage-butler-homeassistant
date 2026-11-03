@@ -10,6 +10,14 @@ Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionen 
 ### Neu
 
 - Favicon (`brand/favicon.png`, 32 × 32) im Stil des App-Favicons mit Haus-Badge.
+- Installation und Updates über HACS: öffentlicher GitHub-Mirror
+  (`exashox/garage-butler-homeassistant`), Button „Open in HACS“, GitHub-Release bei jedem
+  `tool/release.sh`.
+
+### Geändert
+
+- Dokumentation, Fehlermeldungen und Blueprint-Import verweisen auf GitHub statt auf das
+  nicht öffentliche Gitea.
 
 ## [0.1.0] – 2026-11-03
 

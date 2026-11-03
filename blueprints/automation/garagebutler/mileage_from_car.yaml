@@ -5,7 +5,7 @@ blueprint:
     GarageButler once the car has stood still for a while, so mileage-based
     due dates stay correct without typing.
   domain: automation
-  source_url: https://git.exalabs.de/nero/garage-butler-homeassistant/raw/branch/main/blueprints/automation/garagebutler/mileage_from_car.yaml
+  source_url: https://github.com/exashox/garage-butler-homeassistant/blob/main/blueprints/automation/garagebutler/mileage_from_car.yaml
   input:
     odometer:
       name: Odometer
