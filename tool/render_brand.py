@@ -1,4 +1,5 @@
-"""Render brand/*.svg into the PNGs Home Assistant shows (custom_components/garagebutler/brand/).
+"""Render brand/*.svg into the PNGs Home Assistant shows (custom_components/garagebutler/brand/)
+and the favicon (brand/favicon.png).
 
 Uses headless Chrome (path in $CHROME, else the default install locations):
     python tool/render_brand.py
@@ -15,14 +16,15 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "brand"
-OUT = ROOT / "custom_components" / "garagebutler" / "brand"
+HA = ROOT / "custom_components" / "garagebutler" / "brand"
 
 # Home Assistant brand images: icon 256x256 (@2x 512), logo shortest side 128–256 (@2x 256–512).
 IMAGES = {
-    "icon": [("icon.png", 256, 256), ("icon@2x.png", 512, 512)],
-    "dark_icon": [("dark_icon.png", 256, 256), ("dark_icon@2x.png", 512, 512)],
-    "logo": [("logo.png", 732, 164), ("logo@2x.png", 1464, 328)],
-    "dark_logo": [("dark_logo.png", 732, 164), ("dark_logo@2x.png", 1464, 328)],
+    "icon": [(HA / "icon.png", 256, 256), (HA / "icon@2x.png", 512, 512)],
+    "dark_icon": [(HA / "dark_icon.png", 256, 256), (HA / "dark_icon@2x.png", 512, 512)],
+    "logo": [(HA / "logo.png", 732, 164), (HA / "logo@2x.png", 1464, 328)],
+    "dark_logo": [(HA / "dark_logo.png", 732, 164), (HA / "dark_logo@2x.png", 1464, 328)],
+    "favicon": [(SRC / "favicon.png", 32, 32)],
 }
 
 CHROME_PATHS = (
@@ -62,12 +64,12 @@ def render(svg: str, target: Path, width: int, height: int, tmp: Path) -> None:
 
 
 def main() -> None:
-    OUT.mkdir(parents=True, exist_ok=True)
+    HA.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         for name, sizes in IMAGES.items():
             svg = (SRC / f"{name}.svg").read_text(encoding="utf-8")
-            for filename, width, height in sizes:
-                render(svg, OUT / filename, width, height, Path(tmp))
+            for target, width, height in sizes:
+                render(svg, target, width, height, Path(tmp))
 
 
 if __name__ == "__main__":

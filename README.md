@@ -71,7 +71,8 @@ python tool/render_brand.py         # brand/*.svg → custom_components/garagebu
 
 Brand images: the SVG sources in `brand/` derive from the app's butler mark
 (`garage-butler/assets/logos/garagebutler-mark.svg`) with a smart-home badge. Home Assistant
-2026.3+ shows the PNGs from `custom_components/garagebutler/brand/`.
+2026.3+ shows the PNGs from `custom_components/garagebutler/brand/`. `brand/favicon.png` (32×32,
+dark rounded square like the app favicon) is for web pages, repo avatars and the like.
 
 ### Branches and releases
 
