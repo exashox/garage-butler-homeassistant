@@ -18,6 +18,8 @@ Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionen 
 
 - Dokumentation, Fehlermeldungen und Blueprint-Import verweisen auf GitHub statt auf das
   nicht öffentliche Gitea.
+- README: nummerierte Buttons „1. Add to HACS“ und „2. Configure after install“,
+  Blueprint-Import beim Blueprint.
 
 ## [0.1.0] – 2026-11-03
 

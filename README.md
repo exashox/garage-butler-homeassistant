@@ -2,9 +2,8 @@
 
 # GarageButler for Home Assistant
 
-[![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=exashox&repository=garage-butler-homeassistant&category=integration)
-[![Add integration](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=garagebutler)
-[![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fexashox%2Fgarage-butler-homeassistant%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fgaragebutler%2Fmileage_from_car.yaml)
+[![1. Add to HACS](https://img.shields.io/badge/1.%20Add%20to-HACS-41BDF5?style=for-the-badge&logo=homeassistantcommunitystore&logoColor=white)](https://my.home-assistant.io/redirect/hacs_repository/?owner=exashox&repository=garage-butler-homeassistant&category=integration)
+[![2. Configure after install](https://img.shields.io/badge/2.%20Configure-after%20install-41BDF5?style=for-the-badge&logo=homeassistant&logoColor=white)](https://my.home-assistant.io/redirect/config_flow_start/?domain=garagebutler)
 
 Custom integration that brings GarageButler
 vehicles, due dates and ToDos into Home Assistant – and sends the mileage back.
@@ -37,13 +36,15 @@ Blueprint [`mileage_from_car`](blueprints/automation/garagebutler/mileage_from_c
 takes the odometer of any car integration and sends it to GarageButler after the
 car stood still for a while (converts miles).
 
+[![Import blueprint](https://img.shields.io/badge/Import-blueprint-41BDF5?style=for-the-badge&logo=homeassistant&logoColor=white)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fexashox%2Fgarage-butler-homeassistant%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fgaragebutler%2Fmileage_from_car.yaml)
+
 Completing maintenance tasks stays in the app (recurrence, costs, additional fields).
 
 ## Installation
 
-**HACS (recommended, gets updates):** click **Open in HACS** above – or HACS → ⋮ →
+**HACS (recommended, gets updates):** click **1. Add to HACS** above – or HACS → ⋮ →
 Custom repositories → `https://github.com/exashox/garage-butler-homeassistant`, type
-*Integration* – then **Download** and **restart Home Assistant**. New releases show up
+*Integration* – then **Download** and **restart Home Assistant**. Afterwards **2. Configure after install**. New releases show up
 as updates in Home Assistant.
 
 **Manual:** copy the folder `custom_components/garagebutler` so that you end up with
@@ -56,11 +57,11 @@ installation type (OS, Supervised, Container, Core) – it is an integration, no
 ## Setup
 
 1. GarageButler app → Settings → Home Assistant → create a connection, copy the code.
-2. Click **Add integration** above (or Settings → Devices & services → Add integration →
+2. Click **2. Configure after install** above (or Settings → Devices & services → Add integration →
    GarageButler) and paste the code.
 
 The buttons use [My Home Assistant](https://my.home-assistant.io/): on first use it asks
-for the address of your Home Assistant. *Add integration* only works after installing and
+for the address of your Home Assistant. *Configure after install* only works after installing and
 restarting – before that Home Assistant answers "This integration does not support
 configuration via the UI".
 
