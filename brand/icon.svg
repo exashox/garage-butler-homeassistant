@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="12 17 84 84">
+<mask id="m"><rect x="0" y="0" width="100" height="100" fill="#fff"/><circle cx="80" cy="82" r="19" fill="#000"/></mask>
+<clipPath id="c"><rect width="100" height="100"/></clipPath>
+<g clip-path="url(#c)"><g mask="url(#m)">
+<path d="M13 100 V91 Q13 75 30 70.5 L41 67.5 L50 96 L59 67.5 L70 70.5 Q87 75 87 91 V100 Z" fill="#15202B"/>
+<circle cx="50" cy="82" r="1.7" fill="#15202B"/>
+<circle cx="50" cy="89" r="1.7" fill="#15202B"/>
+<path d="M30 38 Q28 18 50 18 Q72 18 70 38 Q67 28 57 26.5 L54.5 29.5 Q41 27 30 38 Z" fill="#15202B"/>
+<circle cx="50" cy="40" r="20" fill="none" stroke="#15202B" stroke-width="4.5"/>
+<path d="M39.5 42 Q42.5 39 45.5 42 M54.5 42 Q57.5 39 60.5 42" fill="none" stroke="#15202B" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M50 48.7 Q45 45.1 39.6 48.1 Q38.2 49.1 37.6 47.7 Q38 52.9 44 52.3 Q48 51.9 50 50.1 Q52 51.9 56 52.3 Q62 52.9 62.4 47.7 Q61.8 49.1 60.4 48.1 Q55 45.1 50 48.7 Z" fill="#15202B"/>
+<path d="M50 71 L39.5 65.5 Q37.5 64.6 37.5 67 V75 Q37.5 77.4 39.5 76.5 Z M50 71 L60.5 65.5 Q62.5 64.6 62.5 67 V75 Q62.5 77.4 60.5 76.5 Z" fill="#E3931B"/>
+<rect x="46.6" y="67.6" width="6.8" height="6.8" rx="1.8" fill="#E3931B" stroke="#15202B" stroke-width="1.6"/>
+</g>
+<circle cx="80" cy="82" r="15" fill="#E3931B"/>
+<path d="M80 72.6 L69.8 81.4 Q69 82.2 70.2 82.2 H72.6 V90 Q72.6 91 73.6 91 H77.6 V85.6 H82.4 V91 H86.4 Q87.4 91 87.4 90 V82.2 H89.8 Q91 82.2 90.2 81.4 Z" fill="#15202B"/>
+</g>
+</svg>
