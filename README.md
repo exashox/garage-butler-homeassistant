@@ -92,9 +92,16 @@ absolute URL because HACS does not resolve relative image paths.
   `manifest.json`, dates the changelog, fast-forwards `main`, tags and pushes; then creates
   the GitHub release from the changelog section via `tool/github_release.sh`.
 - GitHub release: needed for HACS – with releases HACS shows and offers only versions, without
-  them it tracks commits. Uses the `gh` CLI, otherwise `$GITHUB_TOKEN` (fine-grained,
-  *Contents: read and write* on this repository; the push-mirror token works). Without either,
-  or for an older tag: `GITHUB_TOKEN=github_pat_… tool/github_release.sh X.Y.Z`.
+  them it tracks commits. Uses the `gh` CLI, otherwise a fine-grained token with
+  *Contents: read and write* on this repository (the push-mirror token works), read from
+  `~/.config/garage-butler-homeassistant/github-token` or `$GITHUB_TOKEN`. Store it once (Git Bash):
+
+  ```sh
+  mkdir -p ~/.config/garage-butler-homeassistant
+  read -rsp "GitHub token: " t && printf '%s' "$t" > ~/.config/garage-butler-homeassistant/github-token; echo
+  ```
+
+  For an older tag or after a failure: `tool/github_release.sh X.Y.Z`.
 
 Layout:
 

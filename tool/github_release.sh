@@ -3,13 +3,18 @@
 # and shows their version (without a release it shows the commit hash):
 #   GITHUB_TOKEN=github_pat_… tool/github_release.sh 0.1.1
 # Notes are the version's section of CHANGELOG.md. Uses the gh CLI if installed,
-# otherwise the REST API with $GITHUB_TOKEN (fine-grained, Contents: read and write –
-# the push-mirror token works).
+# otherwise the REST API with $GITHUB_TOKEN or the token in
+# ~/.config/garage-butler-homeassistant/github-token (fine-grained, Contents: read and
+# write – the push-mirror token works).
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
 repo=exashox/garage-butler-homeassistant
+token_file="${XDG_CONFIG_HOME:-$HOME/.config}/garage-butler-homeassistant/github-token"
+if [[ -z "${GITHUB_TOKEN:-}" && -r "$token_file" ]]; then
+  GITHUB_TOKEN="$(tr -d '[:space:]' < "$token_file")"
+fi
 
 die() { echo "✗ $*" >&2; exit 1; }
 
@@ -21,7 +26,7 @@ notes="$(awk -v h="## [$version]" 'index($0, h) == 1 {f=1; next} /^## \[/{f=0} f
 [[ -n "${notes//[[:space:]]/}" ]] || die "CHANGELOG.md has no section [$version]"
 
 if ! command -v gh >/dev/null && [[ -z "${GITHUB_TOKEN:-}" ]]; then
-  echo "! neither gh nor \$GITHUB_TOKEN – create the release by hand (notes: CHANGELOG.md, section $version):"
+  echo "! neither gh nor a token ($token_file) – create the release by hand (notes: CHANGELOG.md, section $version):"
   echo "  https://github.com/$repo/releases/new?tag=$tag&title=$version"
   exit 1
 fi
