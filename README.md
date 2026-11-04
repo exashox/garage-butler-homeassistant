@@ -1,4 +1,4 @@
-<p align="center"><img src="brand/logo.svg" alt="GarageButler" width="420"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/exashox/garage-butler-homeassistant/main/brand/banner.png" alt="GarageButler" width="480"></p>
 
 # GarageButler for Home Assistant
 
@@ -78,7 +78,8 @@ python tool/render_brand.py         # brand/*.svg → custom_components/garagebu
 Brand images: the SVG sources in `brand/` derive from the app's butler mark
 (`garage-butler/assets/logos/garagebutler-mark.svg`) with a smart-home badge. Home Assistant
 2026.3+ shows the PNGs from `custom_components/garagebutler/brand/`. `brand/favicon.png` (32×32,
-dark rounded square like the app favicon) is for web pages, repo avatars and the like.
+dark rounded square like the app favicon) is for web pages, repo avatars and the like. `brand/banner.png` heads this README – linked with an
+absolute URL because HACS does not resolve relative image paths.
 
 ### Branches and releases
 
@@ -89,8 +90,11 @@ dark rounded square like the app favicon) is for web pages, repo avatars and the
 - Note every change in `CHANGELOG.md` under *Unveröffentlicht* (German, like the other Exolva projects).
 - Release: `tool/release.sh X.Y.Z` on a clean, pushed `develop` – sets `VERSION` and
   `manifest.json`, dates the changelog, fast-forwards `main`, tags and pushes; then creates
-  the GitHub release from the changelog section (with the `gh` CLI, otherwise it prints the
-  link to create it by hand). HACS offers each GitHub release as an update.
+  the GitHub release from the changelog section via `tool/github_release.sh`.
+- GitHub release: needed for HACS – with releases HACS shows and offers only versions, without
+  them it tracks commits. Uses the `gh` CLI, otherwise `$GITHUB_TOKEN` (fine-grained,
+  *Contents: read and write* on this repository; the push-mirror token works). Without either,
+  or for an older tag: `GITHUB_TOKEN=github_pat_… tool/github_release.sh X.Y.Z`.
 
 Layout:
 

@@ -7,6 +7,12 @@ Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionen 
 
 ## [Unveröffentlicht]
 
+### Behoben
+
+- HACS zeigt die Version statt des Commit-Hashes: `tool/release.sh` legt das GitHub-Release
+  jetzt auch ohne `gh` an (über `$GITHUB_TOKEN`), einzeln mit `tool/github_release.sh`.
+- Logo im README auch in HACS sichtbar (Banner als PNG mit absoluter URL).
+
 ## [0.1.1] – 2026-11-03
 
 ### Neu

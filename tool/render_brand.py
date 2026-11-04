@@ -1,5 +1,5 @@
 """Render brand/*.svg into the PNGs Home Assistant shows (custom_components/garagebutler/brand/)
-and the favicon (brand/favicon.png).
+plus favicon and README banner (brand/favicon.png, brand/banner.png).
 
 Uses headless Chrome (path in $CHROME, else the default install locations):
     python tool/render_brand.py
@@ -25,6 +25,8 @@ IMAGES = {
     "logo": [(HA / "logo.png", 732, 164), (HA / "logo@2x.png", 1464, 328)],
     "dark_logo": [(HA / "dark_logo.png", 732, 164), (HA / "dark_logo@2x.png", 1464, 328)],
     "favicon": [(SRC / "favicon.png", 32, 32)],
+    # README header – absolute URL, HACS does not resolve relative image paths.
+    "banner": [(SRC / "banner.png", 1528, 268)],
 }
 
 CHROME_PATHS = (
