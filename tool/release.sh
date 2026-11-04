@@ -7,8 +7,8 @@
 #   2. commit "Release 0.2.0" on develop
 #   3. fast-forward main to develop, annotated tag v0.2.0
 #   4. push develop, main and the tag; back on develop
-#   5. GitHub release (HACS update) via tool/github_release.sh – needs the gh
-#      CLI or $GITHUB_TOKEN, see there
+# The Gitea push mirror then brings the tag to GitHub, where
+# .github/workflows/release.yml creates the release HACS offers as update.
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -52,6 +52,4 @@ git tag -a "$tag" -m "GarageButler for Home Assistant $version"
 git push -q origin develop main "$tag"
 git checkout -q develop
 
-echo "✓ $tag released"
-
-tool/github_release.sh "$version" || echo "! GitHub release missing – later: tool/github_release.sh $version"
+echo "✓ $tag released – GitHub release follows via mirror and workflow"

@@ -7,6 +7,13 @@ Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionen 
 
 ## [Unveröffentlicht]
 
+### Geändert
+
+- GitHub-Releases entstehen automatisch: Jeder Versions-Tag, den der Mirror zu GitHub bringt,
+  erzeugt per GitHub Actions ein Release mit den Notizen aus diesem Changelog. Kein Token und
+  keine Werkzeuge mehr auf dem Rechner, von dem aus released wird; `tool/github_release.sh`
+  entfällt.
+
 ## [0.1.2] – 2026-11-04
 
 ### Behoben

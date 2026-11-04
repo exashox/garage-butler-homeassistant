@@ -89,19 +89,12 @@ absolute URL because HACS does not resolve relative image paths.
 - Work happens on `develop`; `main` only carries released versions, each tagged `vX.Y.Z`.
 - Note every change in `CHANGELOG.md` under *Unveröffentlicht* (German, like the other Exolva projects).
 - Release: `tool/release.sh X.Y.Z` on a clean, pushed `develop` – sets `VERSION` and
-  `manifest.json`, dates the changelog, fast-forwards `main`, tags and pushes; then creates
-  the GitHub release from the changelog section via `tool/github_release.sh`.
-- GitHub release: needed for HACS – with releases HACS shows and offers only versions, without
-  them it tracks commits. Uses the `gh` CLI, otherwise a fine-grained token with
-  *Contents: read and write* on this repository (the push-mirror token works), read from
-  `~/.config/garage-butler-homeassistant/github-token` or `$GITHUB_TOKEN`. Store it once (Git Bash):
-
-  ```sh
-  mkdir -p ~/.config/garage-butler-homeassistant
-  read -rsp "GitHub token: " t && printf '%s' "$t" > ~/.config/garage-butler-homeassistant/github-token; echo
-  ```
-
-  For an older tag or after a failure: `tool/github_release.sh X.Y.Z`.
+  `manifest.json`, dates the changelog, fast-forwards `main`, tags and pushes.
+- The push mirror brings the tag to GitHub; [`.github/workflows/release.yml`](.github/workflows/release.yml)
+  then creates the GitHub release with the changelog section as notes – nothing to set up on
+  the machine you release from. HACS shows and offers only these releases (without releases
+  it would track commits). The mirror token needs *Workflows: read and write* in addition
+  to *Contents*, because it pushes this workflow file.
 
 Layout:
 
