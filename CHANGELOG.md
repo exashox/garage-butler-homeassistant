@@ -7,6 +7,12 @@ Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionen 
 
 ## [Unveröffentlicht]
 
+### Behoben
+
+- GitHub-Release entsteht zuverlässig: Der Workflow läuft zusätzlich bei Pushes auf `main`,
+  täglich und per „Run workflow“ und legt das Release der aktuellen Version an, falls es fehlt
+  (gespiegelte Tags lösen auf GitHub nicht immer einen Lauf aus).
+
 ## [0.1.3] – 2026-11-04
 
 ### Geändert

@@ -1,11 +1,18 @@
-# GitHub release for every version tag – HACS offers releases as updates and shows
-# their version. The tags come from tool/release.sh via the Gitea push mirror;
-# notes are the version's section of CHANGELOG.md. No secrets: uses the job's token.
+# GitHub release for the current version – HACS offers releases as updates and shows
+# their version. Tags come from tool/release.sh via the Gitea push mirror; notes are
+# the version's section of CHANGELOG.md. No secrets: uses the job's token.
+#
+# Mirror pushes do not always raise push events, so besides tags and main the job
+# also runs daily and by hand ("Run workflow"); it only creates what is missing.
 name: Release
 
 on:
   push:
+    branches: [main]
     tags: ["v*.*.*"]
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -17,11 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: main
 
       - name: Check version and collect notes
         run: |
-          version="${GITHUB_REF_NAME#v}"
-          test "$(tr -d '[:space:]' < VERSION)" = "$version"
+          version="$(tr -d '[:space:]' < VERSION)"
           grep -q "\"version\": \"$version\"" custom_components/garagebutler/manifest.json
           awk -v h="## [$version]" 'index($0, h) == 1 {f=1; next} /^## \[/{f=0} f' CHANGELOG.md > notes.md
           grep -q '[^[:space:]]' notes.md
@@ -31,8 +39,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            echo "Release $GITHUB_REF_NAME exists"
+          tag="v$VERSION"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag exists"
+          elif ! gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$tag" >/dev/null 2>&1; then
+            echo "Tag $tag not on GitHub yet – next run"
           else
-            gh release create "$GITHUB_REF_NAME" --verify-tag --title "$VERSION" --notes-file notes.md
+            gh release create "$tag" --verify-tag --title "$VERSION" --notes-file notes.md
           fi
