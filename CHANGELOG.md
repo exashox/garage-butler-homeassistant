@@ -7,6 +7,8 @@ Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionen 
 
 ## [Unveröffentlicht]
 
+## [0.1.2] – 2026-11-04
+
 ### Behoben
 
 - HACS zeigt die Version statt des Commit-Hashes: `tool/release.sh` legt das GitHub-Release
