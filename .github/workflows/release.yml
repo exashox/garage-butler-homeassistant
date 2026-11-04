@@ -17,6 +17,11 @@ on:
 permissions:
   contents: write
 
+# Tag and main arrive in one mirror push – run one after the other, the second finds the release.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   release:
     # Only on GitHub – Gitea Actions would pick up this file as well.

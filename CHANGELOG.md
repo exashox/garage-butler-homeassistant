@@ -7,6 +7,11 @@ Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionen 
 
 ## [Unveröffentlicht]
 
+### Behoben
+
+- Release-Workflow: Läufe für Tag und `main` laufen nacheinander statt gleichzeitig (kein
+  fehlgeschlagener Doppellauf mehr).
+
 ## [0.1.4] – 2026-11-04
 
 ### Behoben
